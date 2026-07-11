@@ -495,10 +495,15 @@
     try {
       const res = await fetch(WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        mode: 'cors',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({
           chatInput: text,
-          sessionId: sessionId
+          sessionId: sessionId,
+          action: 'sendMessage'
         })
       });
 
